@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/edtnom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:height="55dp"
+                    android:width="250dp"
+                    android:hint="@string/nombre_emp"
+                    android:layout_margin="20dp"/>
+                <!--android:text="Alejandra"/>-->
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:id="@+id/edtapepat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:height="55dp"
+                    android:hint="@string/apepat_emp"
+                    android:layout_margin="20dp"/>
+                <!--android:text="Galvan"/>-->
+            </android.support.design.widget.TextInputLayout>
+        </TableRow>
+        <TableRow>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtapemat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:height="55dp"
+                    android:hint="@string/apemat_emp"
+                    android:layout_margin="20dp"/>
+                <!--android:text="Rojas"/>-->
+            </android.support.design.widget.TextInputLayout>
+
+            <DatePicker
+                android:id="@+id/edtfecha"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="20dp" />
+        </TableRow>
+        <TableRow>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:height="55dp"
+                    android:hint="@string/email_emp"
+                    android:layout_margin="20dp"/>
+                <!--android:text="ale@mail.com"/>-->
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spnpuesto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_margin="20dp"
+                android:entries="@array/spinner_data" />
+        </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="@dimen/md_keylines"
+        android:layout_marginRight="@dimen/md_keylines"
+        app:srcCompat="@drawable/ic_add"
+        android:tint="@color/white"
+        tools:ignore="VectorDrawableCompat" />
+</android.support.design.widget.CoordinatorLayout>
