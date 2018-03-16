@@ -23,7 +23,7 @@
     </group>-->
 
     <group>
-        <item android:title="Empleado">
+        <item android:title="Empleado local">
             <menu>
                 <item android:checkable="true"
                     android:id="@+id/nav_select"
@@ -37,12 +37,22 @@
         </item>
     </group>
     <group>
+        <item android:title="Empleado remoto">
+            <menu>
+                <item android:checkable="true"
+                    android:id="@+id/nav_insert_remote"
+                    android:icon="@drawable/ic_send_black"
+                    android:title="Insertar empleado" />
+            </menu>
+        </item>
+    </group>
+    <group>
         <item android:title="Sesión">
             <menu>
                 <item android:checkable="true"
-                    android:id="@+id/nav_login"
+                    android:id="@+id/nav_logout"
                     android:icon="@drawable/ic_account"
-                    android:title="Iniciar sesión" />
+                    android:title="Cerrar sesión" />
             </menu>
         </item>
     </group>

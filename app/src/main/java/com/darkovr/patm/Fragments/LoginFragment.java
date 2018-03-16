@@ -1,5 +1,6 @@
 package com.darkovr.patm.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -10,24 +11,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.darkovr.patm.Activities.MainActivity;
 import com.darkovr.patm.Api.Token;
 import com.darkovr.patm.BuildConfig;
 import com.darkovr.patm.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +48,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 
     @OnClick(R.id.btLogin) public void Login() {
@@ -70,8 +66,7 @@ public class LoginFragment extends Fragment {
         jsonObject.put("contrasena",txtPassword.getText());
 
         final JsonObjectRequest jsonObjReq = new JsonObjectRequest(
-                Request.Method.POST,url, jsonObject,
-                new Response.Listener<JSONObject>() {
+                Request.Method.POST,url, jsonObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 
@@ -81,7 +76,9 @@ public class LoginFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-                        Snackbar.make(getView(), "¡Has iniciado sesión!", Snackbar.LENGTH_LONG).show();
+                        Intent i = new Intent(getActivity(), MainActivity.class);
+                        startActivity(i);
+                        getActivity().finish();
                         //Toast.makeText(getContext(),response.toString(),Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {

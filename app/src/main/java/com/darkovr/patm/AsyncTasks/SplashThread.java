@@ -3,6 +3,9 @@ package com.darkovr.patm.AsyncTasks;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
+
+import com.darkovr.patm.Activities.LoginActivity;
+import com.darkovr.patm.Fragments.LoginFragment;
 import com.darkovr.patm.R;
 import com.darkovr.patm.Activities.MainActivity;
 import com.darkovr.patm.Fragments.SelectEmpleadoFragment;
@@ -53,9 +56,9 @@ public class SplashThread extends AsyncTask<Void, Integer, Void> {
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
 
-        ((MainActivity) context).getSupportFragmentManager()
+        ((LoginActivity) context).getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, new SelectEmpleadoFragment())
+                .replace(R.id.fragment_container, new LoginFragment())
                 .commit();
 
         splashBar.setVisibility(ProgressBar.INVISIBLE);

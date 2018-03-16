@@ -1,7 +1,9 @@
 package com.darkovr.patm.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.darkovr.patm.Api.Token;
 import com.darkovr.patm.BuildConfig;
+import com.darkovr.patm.Fragments.InsertRemoteEmpleadoFragment;
 import com.darkovr.patm.R;
 import com.darkovr.patm.Fragments.AboutFragment;
 import com.darkovr.patm.Fragments.InsertEmpleadoFragment;
@@ -42,13 +45,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(savedInstanceState == null)
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, new SplashScreenFragment())
-                    .commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new SelectEmpleadoFragment())
+                .commit();
 
-        Toast.makeText(this, BuildConfig.PROTOCOL+BuildConfig.BASE_URL+BuildConfig.PORT,Toast.LENGTH_LONG).show();
+        Snackbar.make(this.navigationView, "¡Has iniciado sesión!", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -99,16 +101,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .beginTransaction()
                         .replace(R.id.fragment_container, new InsertEmpleadoFragment())
                         .commit();
-        } else if (id == R.id.about) {
+        } else if (id == R.id.nav_insert_remote) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new InsertRemoteEmpleadoFragment())
+                    .commit();
+        }else if (id == R.id.about) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, new AboutFragment())
                     .commit();
-        } else if (id == R.id.nav_login) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, new LoginFragment())
-                    .commit();
+        } else if (id == R.id.nav_logout) {
+            Snackbar.make(this.navigationView,"¡Has cerrado sesión!",Snackbar.LENGTH_LONG).show();
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         drawer.closeDrawer(GravityCompat.START);
